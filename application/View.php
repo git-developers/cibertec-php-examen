@@ -18,7 +18,8 @@ class View
 	 */
 	public function renderizar($vista, $partial = false)
 	{
-		$js = array();
+
+        $js = array();
 
 		if(count($this->_js)){
 			$js = $this->_js;
@@ -32,13 +33,6 @@ class View
 		);
 
 		$rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
-
-
-        echo '<pre> POLLO:: ';
-        print_r($VALUE);
-        exit;
-
-
 
         if(is_readable($rutaView)){
 			if (!$partial) {
