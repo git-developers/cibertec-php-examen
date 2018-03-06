@@ -1,3 +1,36 @@
+<section>
+
+    <div id="mensaje"></div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>code</th>
+            <th>actions</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <?php foreach ($this->objects as $key => $object): ?>
+            <tr class="tr-<?php echo $object->getId(); ?>">
+                <th scope="row"><?php echo $object->getId(); ?></th>
+                <td><?php echo $object->getName(); ?></td>
+                <td><?php echo $object->getCode(); ?></td>
+                <td>
+                    <a href="">editar</a>
+                </td>
+                <td>
+                    <button class="delete" data-id="<?php echo $object->getId(); ?>">delete</button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+        </tbody>
+    </table>
+</section>
 
 
-dddddddddddddd
+

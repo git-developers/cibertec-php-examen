@@ -2,11 +2,14 @@
 
 class User
 {
+
     private $id;
 
     private $name;
 
     private $code;
+
+    private $dni;
 
     /**
      * @return mixed
@@ -54,6 +57,22 @@ class User
     public function setCode($code)
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
+     * @param mixed $dni
+     */
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
     }
 
 }

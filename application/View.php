@@ -8,6 +8,7 @@ class View
 	public function __construct(Request $peticion) {
 		$this->_controlador = $peticion->getControlador();
 		$this->_js = array();
+		$this->_css = array();
 	}
 
 
@@ -56,10 +57,27 @@ class View
 	{
 		if(is_array($js) && count($js)){
 			for($i=0; $i < count($js); $i++){
-				$this->_js[] = BASE_URL . 'views/' . $this->_controlador . '/js/' . $js[$i] . '.js';
+//				$this->_js[] = BASE_URL . 'views/' . $this->_controlador . '/js/' . $js[$i] . '.js';
+				$this->_js[] = BASE_URL . 'public/js/' . $js[$i] . '.js';
 			}
 		} else {
 			throw new Exception('Error de js');
+		}
+	}
+
+	/*
+	 *  carga los css  especificos del controlador
+	 *
+	 */
+	public function setCss(array $css)
+	{
+		if(is_array($css) && count($css)){
+			for($i=0; $i < count($css); $i++){
+//				$this->_css[] = BASE_URL . 'views/' . $this->_controlador . '/css/' . $css[$i] . '.css';
+				$this->_css[] = BASE_URL . 'public/css/' . $css[$i] . '.css';
+			}
+		} else {
+			throw new Exception('Error de css');
 		}
 	}
 

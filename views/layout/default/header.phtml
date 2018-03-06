@@ -1,10 +1,90 @@
 <!--https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js-->
 
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Developer Examen</title>
 
-<link href="https://connect.awesome.dev/assets/stylesheets/ie-only.css" rel="stylesheet">
+    <?php foreach ($this->_js as $key => $js): ?>
+        <script src="<?php echo $js; ?>"></script>
+    <?php endforeach; ?>
 
+    <?php foreach ($this->_css as $key => $css): ?>
+        <link href="<?php echo $css; ?>" rel="stylesheet">
+    <?php endforeach; ?>
 
-<?php foreach ($this->_js as $key => $js): ?>
-    <script src="<?php echo $js; ?>"></script>
-<?php endforeach; ?>
+    <script type="text/javascript">
+
+        $( document ).ready(function() {
+
+            $("form").submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'html',
+                    url: '<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user/create' ?>',
+                    data: $("form").serialize(),
+                    success: function(data)
+                    {
+                        if(data === '1'){
+                            $("#mensaje").html("Se guardo con exito");
+                        }else{
+                            $("#mensaje").html("Hubo un error");
+                        }
+                    }
+                });
+
+            });
+
+            $("button.delete").click(function(e) {
+                e.preventDefault();
+
+                if (!confirm('Esta seguro?')){
+                    return false;
+                }
+
+                var id = $(this).data("id");
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'html',
+                    url: '<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user/delete' ?>',
+                    data: {
+                        id: id
+                    },
+                    success: function(data)
+                    {
+                        if(data === '1'){
+                            $(".tr-" + id).remove();
+                            $("#mensaje").html("Se elimino con exito");
+                        }else{
+                            $("#mensaje").html("Hubo un error");
+                        }
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+<header>
+    <h1>CRUD CIBERTEC</h1>
+
+    <ul>
+        <li>
+            <a href="<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user' ?>">Index</a>
+        </li>
+        <li>
+            <a href="<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user/create' ?>">Crear item</a>
+        </li>
+    </ul>
+</header>
+
