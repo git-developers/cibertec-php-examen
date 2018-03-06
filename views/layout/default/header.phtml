@@ -1,6 +1,3 @@
-<!--https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js-->
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +16,7 @@
 
         $( document ).ready(function() {
 
-            $("form").submit(function(e) {
+            $('form[name="create"]').submit(function(e) {
                 e.preventDefault();
 
                 $.ajax({
@@ -36,7 +33,25 @@
                         }
                     }
                 });
+            });
 
+            $('form[name="edit"]').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'html',
+                    url: '<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user/edit' ?>',
+                    data: $("form").serialize(),
+                    success: function(data)
+                    {
+                        if(data === '1'){
+                            $("#mensaje").html("Se edito con exito");
+                        }else{
+                            $("#mensaje").html("Hubo un error");
+                        }
+                    }
+                });
             });
 
             $("button.delete").click(function(e) {
@@ -88,3 +103,4 @@
     </ul>
 </header>
 
+<div id="mensaje"></div>

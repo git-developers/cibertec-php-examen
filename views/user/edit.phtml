@@ -1,0 +1,29 @@
+<section>
+
+    <strong>ID:: <?php echo $this->object->getId() ?></strong>
+
+    <form name="edit">
+
+        <input type="hidden" name="id" value="<?php echo $this->object->getId() ?>">
+
+        <div class="form-input">
+            <label>Name</label>
+            <input type="text" placeholder="Name" name="name" required value="<?php echo $this->object->getName() ?>">
+        </div>
+
+        <div class="form-input">
+            <label>Code</label>
+            <input type="text" placeholder="Code" name="code" required value="<?php echo $this->object->getCode() ?>">
+        </div>
+
+        <div class="form-input">
+            <label>Dni</label>
+            <input type="text" placeholder="Dni" name="dni" required value="<?php echo $this->object->getDni() ?>">
+        </div>
+
+        <button type="submit" class="">Enviar</button>
+    </form>
+</section>
+
+
+

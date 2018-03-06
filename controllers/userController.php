@@ -24,7 +24,6 @@ class userController extends Controller
 
     public function create()
     {
-
         if($_POST){
 
             $object = new User;
@@ -40,6 +39,27 @@ class userController extends Controller
         $this->_view->renderizar("create");
     }
 
+    public function edit()
+    {
+        if($_POST){
+            $object = new User;
+            $object->setId($_POST["id"]);
+            $object->setName($_POST["name"]);
+            $object->setCode($_POST["code"]);
+            $object->setDni($_POST["dni"]);
+
+            $model = new UserModel();
+            echo $model->edit($object);
+            return;
+        }
+
+        $model = new UserModel();
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $this->_view->object = $model->getUser($id);
+
+        $this->_view->renderizar("edit");
+    }
+
     public function delete()
     {
         if($_POST){
@@ -50,5 +70,7 @@ class userController extends Controller
             echo $model->delete($object);
             return;
         }
+
+        return false;
     }
 }

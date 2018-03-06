@@ -1,13 +1,11 @@
 <section>
-
-    <div id="mensaje"></div>
-
-    <table class="table">
+    <table border="1">
         <thead>
         <tr>
             <th>#</th>
             <th>name</th>
             <th>code</th>
+            <th>dni</th>
             <th>actions</th>
             <th>actions</th>
         </tr>
@@ -19,8 +17,9 @@
                 <th scope="row"><?php echo $object->getId(); ?></th>
                 <td><?php echo $object->getName(); ?></td>
                 <td><?php echo $object->getCode(); ?></td>
+                <td><?php echo $object->getDni(); ?></td>
                 <td>
-                    <a href="">editar</a>
+                    <a href="<?php echo 'http://'.$_SERVER['SERVER_ADDR'].'/framephp/index.php?url=user/edit&id=' . $object->getId() ?>">editar</a>
                 </td>
                 <td>
                     <button class="delete" data-id="<?php echo $object->getId(); ?>">delete</button>
