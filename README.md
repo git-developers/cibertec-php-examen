@@ -3,11 +3,11 @@ CIBERTEC
 
 * Author: Bendezu, Jafeth
 * Fecha: 2018
-* Tuve que dar de nuevo el examen de 
+* Tuve que dar de nuevo el examen de:
 ```sh
 PHP Developer
 ```
-Y para asegurarme consiga el certificado, he creado este proyecto.
+He creado este proyecto, para asegurarme consiga el certificado,.
 
 
 INGRESO AL SISTEMA
