@@ -11,9 +11,11 @@
 abstract class Controller
 {
 	protected $_view;
+	protected $_request;
 
 	public function __construct() {
-		$this->_view = new View(new Request);
+		$this->_request = new Request;
+		$this->_view = new View($this->_request);
 	}
 
 	abstract public function index();

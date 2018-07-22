@@ -16,6 +16,10 @@ class userController extends Controller
 
     public function index()
     {
+
+
+
+
         $model = new UserModel();
         $this->_view->objects = $model->listUser();
 
