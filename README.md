@@ -1,6 +1,6 @@
 CIBERTEC
 ========
-* Author: Bendezu, Jafeth
+* Author: Tianos
 * Fecha: 2018
 * Tuve que dar de nuevo el examen de:
 ```sh
